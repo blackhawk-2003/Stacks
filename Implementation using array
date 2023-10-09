@@ -1,0 +1,72 @@
+//
+// Created by ABHIADI on 09-10-2023.
+//
+#include<iostream>
+
+using namespace std;
+
+//declaring a variable name "TOP" to keep track of the top most element
+int top=-1;//global variable with value -1 to check if the stack is empty or not
+
+//declaring a function push
+void push(int stack[], int x, int n){
+    if(top==n-1){//checking if the stack is full
+        cout<<"STACK OVERFLOW"<<endl;
+    }
+    else {// if not full increase the value of top by one and then inserting the new element
+        top=top+1;
+        stack[top]=x;
+    }
+}
+//declaring the function pop for deleting the topmost element
+void pop(){
+    if(top==-1){//checking if the stack is empty
+        cout<<"Stack underflow"<<endl;
+    }
+    else{//decrementing the value of the top to remove the last topmost element
+        top=top-1;
+    }
+}
+//declaring the function isempty() that checks if top is equal to -1.
+bool isEmpty(){
+    if(top==-1){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+//declaring the function that return the current size of the stack
+int size(){
+    return top+1;
+}
+//declaring the function that returns the top element of the stack
+int peek(int stack[]){
+    return stack[top];
+}
+//driver code
+int main(){
+    int stack[3];
+    //pushing element 5 in the stack
+    push(stack,5,3);
+    cout<<"The current size of the stack is "<<size()<<endl;
+    push(stack,10,3);
+    push(stack,20,3);
+    cout<<"The current size of the stack is "<<size()<<endl;
+
+    //As stack is full, further pushing will show an overflow condition
+    push(stack,30,3);
+    //accessing the top element of the stack
+
+    cout<<"The current top element of the stack is "<<peek(stack)<<endl;
+
+    //removing all the elements from the stack
+    for(int i=0;i<3;i++)
+    {
+        pop();
+    }
+    cout<<"The current size of the stack is "<<size()<<endl;
+
+    //As the stack is empty, further popping will show an underflow condition
+    pop();
+}
